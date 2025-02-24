@@ -1,0 +1,77 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-900 mt-10 mb-20">
+  <div class="card w-96 bg-gray-800 shadow-xl p-6">
+    <h2 class="text-center text-2xl font-bold text-gray-200 mb-4">Register</h2>
+
+    <form [formGroup]="registerForm" (ngSubmit)="saveUser()">
+      <!-- Name -->
+      <div class="form-control mb-4">
+        <label class="label">
+          <span class="label-text text-gray-300">Full Name</span>
+        </label>
+        <input
+          type="text"
+          formControlName="name"
+          placeholder="Enter your full name"
+          class="input input-bordered w-full bg-gray-700 text-gray-200 placeholder-gray-400"
+          required
+        />
+      </div>
+
+      <!-- Email -->
+      <div class="form-control mb-4">
+        <label class="label">
+          <span class="label-text text-gray-300">Email</span>
+        </label>
+        <input
+          type="email"
+          formControlName="email"
+          placeholder="Enter your email"
+          class="input input-bordered w-full bg-gray-700 text-gray-200 placeholder-gray-400"
+          required
+        />
+      </div>
+
+      <!-- Password -->
+      <div class="form-control mb-4">
+        <label class="label">
+          <span class="label-text text-gray-300">Password</span>
+        </label>
+        <input
+          type="password"
+          formControlName="password"
+          placeholder="Enter your password"
+          class="input input-bordered w-full bg-gray-700 text-gray-200 placeholder-gray-400"
+          required
+        />
+      </div>
+
+      <!-- Role Selection -->
+      <div class="form-control mb-4">
+        <label class="label">
+          <span class="label-text text-gray-300">Select Role</span>
+        </label>
+        <select
+          formControlName="role"
+          class="select select-bordered w-full bg-gray-700 text-gray-200"
+          required
+        >
+          <option value="" disabled selected>Select Role</option>
+          <option value="Customer">Customer</option>
+          <option value="Agent">Agent</option>
+          <option value="Admin">Admin</option>
+        </select>
+      </div>
+
+      <!-- Submit Button -->
+      <div class="form-control">
+        <button class="btn btn-primary w-full" [disabled]="registerForm.invalid">Register</button>
+      </div>
+
+      <div class="text-center mt-2">
+        <p class="text-sm text-gray-400">Already have an account?
+          <a class="text-blue-400 hover:underline" routerLink="/login" routerLinkActive="active">Login</a>
+        </p>
+      </div>
+    </form>
+  </div>
+</div>

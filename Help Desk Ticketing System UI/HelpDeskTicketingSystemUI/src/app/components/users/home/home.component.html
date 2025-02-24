@@ -1,0 +1,112 @@
+<div class="min-h-screen bg-gray-900 text-gray-200 flex flex-col items-center justify-center pt-32">
+  <!-- Hero Section -->
+  <div class="text-center max-w-2xl mb-32 mt-32">
+    <h1 class="text-4xl font-extrabold mb-4 text-blue-400">Welcome to the Ticket Management System</h1>
+    <p class="text-lg text-gray-400">
+      Efficiently manage your tickets, track progress, and get quick resolutions.
+      Register now to create and track your support tickets.
+    </p>
+
+    <!-- Buttons: Register & Login -->
+    <div class="mt-6 flex justify-center gap-4">
+      <a routerLink="/register">
+        <button class="btn btn-primary px-6 py-2 text-lg">Register</button>
+      </a>
+      <a routerLink="/login">
+        <button class="btn btn-outline px-6 py-2 text-lg text-gray-300 border-gray-500">Login</button>
+      </a>
+    </div>
+  </div>
+
+  <!-- Features Section -->
+  <section class="py-16 bg-gray-900 text-white">
+    <div class="container mx-auto text-center">
+      <h2 class="text-4xl font-bold mb-8">Our Key Features</h2>
+      <p class="text-gray-400 max-w-2xl mx-auto mb-12">
+        Experience a seamless and efficient support system with our advanced help desk ticketing platform.
+      </p>
+
+      <div class="grid gap-10 sm:grid-cols-2 lg:grid-cols-3">
+
+        <!-- Feature Cards -->
+        <div class="card bg-gray-800 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-indigo-500 transition-all">
+          <div class="card-body items-center text-center">
+            <div class="w-16 h-16 bg-indigo-500 rounded-full flex items-center justify-center mb-4 transition-all hover:bg-white">
+              <svg class="w-10 h-10 text-white hover:text-indigo-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 12l2 2 4-4"></path>
+                <path d="M20 12a8 8 0 1 1-16 0 8 8 0 0 1 16 0z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title text-lg font-semibold">Effortless Ticketing</h3>
+            <p>Easily create and manage tickets with our intuitive system, ensuring fast issue resolution.</p>
+          </div>
+        </div>
+
+        <div class="card bg-gray-800 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-blue-500 transition-all">
+          <div class="card-body items-center text-center">
+            <div class="w-16 h-16 bg-blue-500 rounded-full flex items-center justify-center mb-4 transition-all hover:bg-white">
+              <svg class="w-10 h-10 text-white hover:text-blue-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 19l7-7 3 3-7 7-3-3z"></path>
+                <path d="M6 6l3 3-3 3-3-3 3-3z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title text-lg font-semibold">Real-Time Notifications</h3>
+            <p>Get instant updates about ticket progress with push notifications and email alerts.</p>
+          </div>
+        </div>
+
+        <div class="card bg-gray-800 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-green-500 transition-all">
+          <div class="card-body items-center text-center">
+            <div class="w-16 h-16 bg-green-500 rounded-full flex items-center justify-center mb-4 transition-all hover:bg-white">
+              <svg class="w-10 h-10 text-white hover:text-green-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 6v6l4 2"></path>
+              </svg>
+            </div>
+            <h3 class="card-title text-lg font-semibold">24/7 Support</h3>
+            <p>Our dedicated team is available round-the-clock to ensure seamless support whenever needed.</p>
+          </div>
+        </div>
+
+        <div class="card bg-gray-800 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-yellow-500 transition-all">
+          <div class="card-body items-center text-center">
+            <div class="w-16 h-16 bg-yellow-500 rounded-full flex items-center justify-center mb-4 transition-all hover:bg-white">
+              <svg class="w-10 h-10 text-white hover:text-yellow-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 3v18h18"></path>
+                <path d="M7 12l3-3 4 4 5-5"></path>
+              </svg>
+            </div>
+            <h3 class="card-title text-lg font-semibold">Advanced Analytics</h3>
+            <p>Gain valuable insights with real-time analytics, reports, and performance tracking tools.</p>
+          </div>
+        </div>
+
+        <div class="card bg-gray-800 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-purple-500 transition-all">
+          <div class="card-body items-center text-center">
+            <div class="w-16 h-16 bg-purple-500 rounded-full flex items-center justify-center mb-4 transition-all hover:bg-white">
+              <svg class="w-10 h-10 text-white hover:text-purple-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M10 9V3h4v6"></path>
+                <path d="M12 3v12m0 0l4-4m-4 4l-4-4"></path>
+              </svg>
+            </div>
+            <h3 class="card-title text-lg font-semibold">Customizable Workflows</h3>
+            <p>Automate tasks and set up custom workflows to streamline support processes.</p>
+          </div>
+        </div>
+
+        <div class="card bg-gray-800 shadow-lg hover:shadow-2xl hover:scale-105 hover:bg-red-500 transition-all">
+          <div class="card-body items-center text-center">
+            <div class="w-16 h-16 bg-red-500 rounded-full flex items-center justify-center mb-4 transition-all hover:bg-white">
+              <svg class="w-10 h-10 text-white hover:text-red-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2l8 4v6a8 8 0 0 1-16 0V6z"></path>
+              </svg>
+            </div>
+            <h3 class="card-title text-lg font-semibold">Secure Data Protection</h3>
+            <p>Your data is fully encrypted and protected, ensuring privacy and security at all times.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+</div>

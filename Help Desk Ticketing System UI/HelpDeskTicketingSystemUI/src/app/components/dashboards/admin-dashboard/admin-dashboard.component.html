@@ -1,0 +1,62 @@
+<div class="flex flex-col items-center min-h-screen bg-gray-900 pt-20 px-4">
+  <div class="w-full max-w-5xl bg-gray-800 shadow-xl p-6 rounded-xl mt-20 mb-20">
+    <h2 class="text-center text-2xl font-bold text-gray-200 mb-6">Admin Dashboard</h2>
+
+    <!-- Filter Section -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <select
+
+        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+
+      >
+        <option value="">All Statuses</option>
+        <option></option>
+      </select>
+
+      <select
+
+        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+
+      >
+        <option value="">All Priorities</option>
+        <option></option>
+      </select>
+    </div>
+
+    <!-- Tickets List -->
+    <div>
+      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-200"></h3>
+        <p class="text-sm text-gray-400"></p>
+        <div class="flex justify-between items-center mt-2">
+          <span class="badge badge-primary"></span>
+          <span class="badge badge-secondary"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Tickets Message -->
+    <ng-template #noTickets>
+      <p class="text-center text-gray-400">No tickets found.</p>
+    </ng-template>
+
+    <!-- Reports Section -->
+    <div class="mt-8">
+      <h3 class="text-xl font-semibold text-gray-200 mb-4">Reports</h3>
+
+      <!-- Average Resolution Time -->
+      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
+        <h4 class="text-lg font-semibold text-gray-200">Avg. Resolution Time</h4>
+        <p class="text-gray-400">📊  hours</p>
+      </div>
+
+      <!-- Agent Performance -->
+      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
+        <h4 class="text-lg font-semibold text-gray-200">Agent Performance</h4>
+        <div class="text-gray-400">
+          🔹 :  resolved
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

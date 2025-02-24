@@ -1,0 +1,50 @@
+<div class="flex flex-col items-center min-h-screen bg-gray-900 pt-20 px-4">
+  <div class="w-full max-w-4xl bg-gray-800 shadow-xl p-6 rounded-xl mt-20 mb-20">
+    <h2 class="text-center text-2xl font-bold text-gray-200 mb-6">Agent Dashboard</h2>
+
+    <!-- Search & Filter Section -->
+    <div class="flex flex-col md:flex-row gap-4 mb-6">
+      <!-- Status Filter -->
+      <select
+
+        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+
+      >
+        <option value="">All Statuses</option>
+        <option value="0" >Open</option>
+        <option value="1">In Progress</option>
+        <option value="2">Resolved</option>
+        <option value="3">Closed</option>
+      </select>
+
+      <!-- Priority Filter -->
+      <select
+
+        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+
+      >
+          <option value="">All Priorities</option>
+          <option value=0>Low</option>
+          <option value=1>Medium</option>
+          <option value=2>High</option>
+      </select>
+    </div>
+
+    <!-- Tickets List -->
+    <div>
+      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
+        <h3 class="text-lg font-semibold text-gray-200"></h3>
+        <p class="text-sm text-gray-400"></p>
+        <div class="flex justify-between items-center mt-2">
+          <span class="badge badge-primary"></span>
+          <span class="badge badge-secondary"></span>
+        </div>
+      </div>
+    </div>
+
+    <!-- No Tickets Message -->
+    <ng-template #noTickets>
+      <p class="text-center text-gray-400">No assigned tickets found.</p>
+    </ng-template>
+  </div>
+</div>
