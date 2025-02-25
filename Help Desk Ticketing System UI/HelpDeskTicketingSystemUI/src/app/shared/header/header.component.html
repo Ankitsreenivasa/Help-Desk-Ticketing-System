@@ -4,30 +4,19 @@
     <!-- Mobile Menu -->
     <div class="dropdown">
       <div tabindex="0" role="button" class="btn btn-ghost lg:hidden">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-6 w-6 text-gray-200"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h8m-8 6h16" />
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h8m-8 6h16"/>
         </svg>
       </div>
-      <ul
-        tabindex="0"
-        class="menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-gray-800 rounded-lg text-gray-300">
+      <ul tabindex="0" class="menu menu-sm dropdown-content mt-3 w-52 p-2 shadow bg-gray-800 rounded-lg text-gray-300">
         <li><a routerLink="/create-tickets" routerLinkActive="active">Tickets</a></li>
         <li>
           <details>
             <summary>Dashboards</summary>
             <ul class="p-2 bg-gray-800 rounded-lg">
-              <li><a routerLink="/customer-dashboard" routerLinkActive="active">Customer</a></li>
-              <li><a routerLink="/agent-dashboard" routerLinkActive="active">Support Agent</a></li>
-              <li><a routerLink="/admin-dashboard" routerLinkActive="active">Admin</a></li>
+              <li *ngFor="let dashboard of dashboards">
+                <a [routerLink]="dashboard.link" routerLinkActive="active">{{ dashboard.name }}</a>
+              </li>
             </ul>
           </details>
         </li>
@@ -49,9 +38,9 @@
         <details>
           <summary>Dashboards</summary>
           <ul class="p-2 bg-gray-800 rounded-lg">
-            <li><a routerLink="/customer-dashboard" routerLinkActive="active">Customer</a></li>
-            <li><a routerLink="/agent-dashboard" routerLinkActive="active">Support Agent</a></li>
-            <li><a routerLink="/admin-dashboard" routerLinkActive="active">Admin</a></li>
+            <li *ngFor="let dashboard of dashboards">
+              <a [routerLink]="dashboard.link" routerLinkActive="active">{{ dashboard.name }}</a>
+            </li>
           </ul>
         </details>
       </li>
@@ -59,9 +48,10 @@
     </ul>
   </div>
 
-  <!-- Navbar End (Login Button) -->
+  <!-- Navbar End (Login/Logout Button) -->
   <div class="navbar-end">
-    <a class="btn btn-primary px-5 py-2 text-white" routerLink="/login" routerLinkActive="active">Log In</a>
+    <a *ngIf="!isAuthenticated" class="btn btn-primary px-5 py-2 text-white" routerLink="/login" routerLinkActive="active">Log In</a>
+    <button *ngIf="isAuthenticated" class="btn btn-error px-5 py-2 text-white" (click)="logout()">Log Out</button>
   </div>
 </div>
 
