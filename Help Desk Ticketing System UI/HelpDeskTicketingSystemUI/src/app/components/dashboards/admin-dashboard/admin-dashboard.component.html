@@ -1,62 +1,70 @@
-<div class="flex flex-col items-center min-h-screen bg-gray-900 pt-20 px-4">
-  <div class="w-full max-w-5xl bg-gray-800 shadow-xl p-6 rounded-xl mt-20 mb-20">
-    <h2 class="text-center text-2xl font-bold text-gray-200 mb-6">Admin Dashboard</h2>
+<div class="container mx-auto p-8 space-y-10 my-32">
+  <h2 class="text-4xl font-bold text-white text-center">Admin Dashboard</h2>
 
-    <!-- Filter Section -->
-    <div class="flex flex-col md:flex-row gap-4 mb-6">
-      <select
+  <!-- All Tickets Section -->
+  <div class="card bg-gray-800 shadow-lg p-8 rounded-xl">
+    <h3 class="text-2xl text-white font-semibold mb-6">All Tickets</h3>
 
-        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+    <div *ngIf="tickets.length > 0; else noTickets" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div *ngFor="let ticket of tickets" class="card bg-gray-700 p-6 rounded-lg shadow-lg space-y-4">
 
-      >
-        <option value="">All Statuses</option>
-        <option></option>
-      </select>
+        <!-- Ticket Header -->
+        <div class="flex justify-between items-center">
+          <h4 class="text-xl font-semibold text-white">{{ ticket.title }}</h4>
+          <span class="badge px-3 py-1 text-xs font-semibold uppercase"
+                [ngClass]="{
+                  'bg-yellow-500': ticket.status === 'OPEN',
+                  'bg-blue-500': ticket.status === 'IN_PROGRESS',
+                  'bg-green-500': ticket.status === 'RESOLVED',
+                  'bg-red-500': ticket.status === 'CLOSED'
+                }">
+            {{ ticket.status }}
+          </span>
+        </div>
 
-      <select
+        <p class="text-gray-300">{{ ticket.description }}</p>
 
-        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+        <!-- Created By & Assigned Agent -->
+        <div class="text-sm text-gray-400 border-t border-gray-600 pt-3">
+          <p class="font-medium">Created By: <span class="badge bg-purple-500">{{ ticket.createdBy }}</span></p>
+          <p class="font-medium">Assigned To:
+            <span class="badge bg-gray-500">{{ ticket.assignedTo || 'Not Assigned' }}</span>
+          </p>
+        </div>
 
-      >
-        <option value="">All Priorities</option>
-        <option></option>
-      </select>
-    </div>
-
-    <!-- Tickets List -->
-    <div>
-      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
-        <h3 class="text-lg font-semibold text-gray-200"></h3>
-        <p class="text-sm text-gray-400"></p>
-        <div class="flex justify-between items-center mt-2">
-          <span class="badge badge-primary"></span>
-          <span class="badge badge-secondary"></span>
+        <!-- Created & Updated Timestamps -->
+        <div class="text-sm text-gray-400 border-t border-gray-600 pt-3">
+          <p>🕒 Created: {{ ticket.createdAt | date: 'MMM d, y h:mm a' }}</p>
+          <p>🔄 Updated: {{ ticket.updatedAt | date: 'MMM d, y h:mm a' }}</p>
         </div>
       </div>
     </div>
 
-    <!-- No Tickets Message -->
     <ng-template #noTickets>
-      <p class="text-center text-gray-400">No tickets found.</p>
+      <p class="text-gray-400 text-center text-lg mt-4">No tickets found.</p>
     </ng-template>
+  </div>
 
-    <!-- Reports Section -->
-    <div class="mt-8">
-      <h3 class="text-xl font-semibold text-gray-200 mb-4">Reports</h3>
+  <!-- Reports Section -->
+  <div class="card bg-gray-800 shadow-lg p-8 rounded-xl">
+    <h3 class="text-2xl text-white font-semibold mb-6">Reports</h3>
 
-      <!-- Average Resolution Time -->
-      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
-        <h4 class="text-lg font-semibold text-gray-200">Avg. Resolution Time</h4>
-        <p class="text-gray-400">📊  hours</p>
-      </div>
+    <!-- Average Resolution Time -->
+    <!-- <div class="bg-gray-700 p-5 rounded-lg shadow-md text-white text-lg font-medium text-center">
+      <p>⏳ Average Resolution Time: <span class="font-semibold text-green-400">{{ avgResolutionTime }}</span></p>
+    </div> -->
 
-      <!-- Agent Performance -->
-      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
-        <h4 class="text-lg font-semibold text-gray-200">Agent Performance</h4>
-        <div class="text-gray-400">
-          🔹 :  resolved
-        </div>
+    <!-- Agent Performance -->
+    <h3 class="text-xl text-white font-semibold mt-6 mb-3">Agent Performance</h3>
+    <div *ngIf="agentsPerformance.length > 0; else noPerformance" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div *ngFor="let agent of agentsPerformance" class="bg-gray-700 p-4 rounded-lg shadow-md flex justify-between items-center">
+        <p class="text-white font-medium">{{ agent.agentName }}</p>
+        <span class="badge bg-blue-500 text-white px-4 py-1">{{ agent.resolvedTickets }} Tickets Resolved</span>
       </div>
     </div>
+
+    <ng-template #noPerformance>
+      <p class="text-gray-400 text-center text-lg mt-4">No performance data available.</p>
+    </ng-template>
   </div>
 </div>

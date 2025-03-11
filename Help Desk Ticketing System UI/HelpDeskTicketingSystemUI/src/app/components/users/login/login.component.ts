@@ -13,8 +13,8 @@ import { AuthService } from '../../../service/auth.service';
 })
 export class LoginComponent {
   loginForm = new FormGroup({
-    email: new FormControl<string>('', [Validators.required, Validators.email]),
-    password: new FormControl<string>('', Validators.required),
+    email: new FormControl<string | null>(null, [Validators.required, Validators.email]), // Fixed types
+    password: new FormControl<string | null>(null, [Validators.required])
   });
 
   constructor(private authService: AuthService, private router: Router) {}
@@ -25,29 +25,36 @@ export class LoginComponent {
       return;
     }
 
-    const credentials = this.loginForm.value as { email: string; password: string };
+    // Ensure the values are properly extracted
+    const credentials = {
+      email: this.loginForm.get('email')?.value ?? '',
+      password: this.loginForm.get('password')?.value ?? ''
+    };
 
-    this.authService.login(credentials).subscribe({
+    this.authService.login(credentials.email, credentials.password).subscribe({
       next: (response) => {
-        this.authService.storeToken(response.token); // Store token
-        this.loginForm.reset();
-        alert('User logged in successfully!');
+        if (response) {
+          this.authService.storeToken(response.token); // Store token properly
+          this.loginForm.reset();
+          // alert('User logged in successfully!');
 
-        const role = this.authService.getUserRole(); // Get user role from token
+          const role = this.authService.getUserRole(); // Fetch role from localStorage
 
-        // Navigate based on user role
-        const dashboardRoutes: Record<string, string> = {
-          Admin: '/admin-dashboard',
-          Agent: '/agent-dashboard',
-          Customer: '/customer-dashboard'
-        };
+          const dashboardRoutes: Record<string, string> = {
+            ADMIN: '/admin-dashboard',
+            AGENT: '/agent-dashboard',
+            CUSTOMER: '/customer-dashboard'
+          };
 
-        this.router.navigate([dashboardRoutes[role ?? ''] || '/home']); // Default to home if no role found
+          this.router.navigate([dashboardRoutes[role?.toUpperCase() ?? ''] || '/home']); // Default to home
+        } else {
+          alert('Invalid credentials. Please try again.');
+        }
       },
       error: (err) => {
         console.error('Login failed:', err);
         alert('Invalid credentials. Please try again.');
-      },
+      }
     });
   }
 }

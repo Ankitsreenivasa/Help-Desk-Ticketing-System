@@ -1,47 +1,57 @@
-<div class="flex flex-col items-center min-h-screen bg-gray-900 pt-20 px-4">
-  <div class="w-full max-w-4xl bg-gray-800 shadow-xl p-6 rounded-xl mt-20 mb-20">
-    <h2 class="text-center text-2xl font-bold text-gray-200 mb-6">Customer Dashboard</h2>
+<div class="container mx-auto p-6 space-y-8 my-32">
+  <h2 class="text-3xl font-bold text-white text-center">Customer Dashboard</h2>
 
-    <!-- Search & Filter Section -->
-    <div class="flex flex-col md:flex-row gap-4 mb-6">
-      <!-- Search Bar -->
-      <input
-        type="text"
-        placeholder="Search tickets..."
+  <!-- Create Ticket Form -->
+  <div class="card bg-gray-800 shadow-lg p-6 rounded-lg">
+    <h3 class="text-xl text-white font-semibold mb-4">Create a Ticket</h3>
+    <form [formGroup]="ticketForm" (ngSubmit)="createTicket()" class="space-y-4">
+      <input type="text" formControlName="title" placeholder="Ticket Title" class="input input-bordered w-full bg-gray-700 text-gray-200 placeholder-gray-400">
+      <textarea formControlName="description" placeholder="Describe your issue" class="textarea textarea-bordered w-full bg-gray-700 text-gray-200 placeholder-gray-400"></textarea>
 
-        class="input input-bordered w-full bg-gray-700 text-gray-200 placeholder-gray-400"
-
-      />
-
-      <!-- Status Filter -->
-      <select
-
-        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
-
-      >
-        <option value="">All Statuses</option>
-        <option value="0" >Open</option>
-        <option value="1">In Progress</option>
-        <option value="2">Resolved</option>
-        <option value="3">Closed</option>
+      <select formControlName="priority" class="select select-bordered w-full bg-gray-700 text-gray-200">
+        <option value="Low">Low Priority</option>
+        <option value="Medium">Medium Priority</option>
+        <option value="High">High Priority</option>
       </select>
-    </div>
 
-    <!-- Tickets List -->
-    <div >
-      <div  class="card bg-gray-700 p-4 mb-4 rounded-lg">
-        <h3 class="text-lg font-semibold text-gray-200"></h3>
-        <p class="text-sm text-gray-400"></p>
-        <div class="flex justify-between items-center mt-2">
-          <span class="badge badge-primary"></span>
-          <span class="text-xs text-gray-400">Updated: </span>
-        </div>
+      <button type="submit" class="btn btn-primary w-full" [disabled]="ticketForm.invalid">Submit Ticket</button>
+    </form>
+  </div>
+
+  <!-- Your Tickets -->
+<div class="card bg-gray-800 shadow-lg p-6 rounded-lg">
+  <h3 class="text-2xl text-white font-semibold mb-4">Your Tickets</h3>
+
+  <div *ngIf="tickets.length > 0; else noTickets" class="space-y-4">
+    <div *ngFor="let ticket of tickets" class="card bg-gray-700 rounded-lg shadow-lg p-5 space-y-4">
+
+      <!-- Ticket Header -->
+      <div class="flex justify-between items-center">
+        <h4 class="text-xl font-semibold text-white">{{ ticket.title }}</h4>
+        <span class="badge px-3 py-1 text-xs font-semibold uppercase"
+              [ngClass]="{
+                'bg-yellow-500': ticket.status === 'OPEN',
+                'bg-blue-500': ticket.status === 'IN_PROGRESS',
+                'bg-green-500': ticket.status === 'RESOLVED',
+                'bg-red-500': ticket.status === 'CLOSED'
+              }">
+          {{ ticket.status }}
+        </span>
+      </div>
+
+      <p class="text-gray-300">{{ ticket.description }}</p>
+
+      <!-- Created & Updated Timestamps -->
+      <div class="text-sm text-gray-400">
+        <p>Created: {{ ticket.createdAt | date: 'MMM d, y h:mm a' }}</p>
+        <p>Updated: {{ ticket.updatedAt | date: 'MMM d, y h:mm a' }}</p>
       </div>
     </div>
-
-    <!-- No Tickets Message -->
-    <ng-template #noTickets>
-      <p class="text-center text-gray-400">No tickets found.</p>
-    </ng-template>
   </div>
+
+  <ng-template #noTickets>
+    <p class="text-gray-400 text-center text-lg">No tickets found. Create a new one above!</p>
+  </ng-template>
+</div>
+
 </div>

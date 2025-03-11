@@ -1,25 +1,22 @@
-import { inject } from '@angular/core';
-import { CanActivateFn, Router } from '@angular/router';
-import { AuthService } from '../service/auth.service';
+import { Injectable } from '@angular/core';
+import { CanActivate, ActivatedRouteSnapshot, RouterStateSnapshot, Router } from '@angular/router';
 
-export const authGuard: CanActivateFn = (route, state) => {
-  const authService = inject(AuthService);
-  const router = inject(Router);
+@Injectable({
+  providedIn: 'root'
+})
+export class AuthGuard implements CanActivate {
+  constructor(private router: Router) {}
 
-  const userRole = authService.getUserRole(); // Get user role from token
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
+    const userRole = localStorage.getItem('userRole'); // Get role from localStorage
+    const allowedRoles: string[] = route.data['roles']; // Get allowed roles from route data
 
-  // If user is NOT logged in, redirect to login
-  if (!userRole) {
-    router.navigate(['/login']);
+    if (userRole && allowedRoles.includes(userRole)) {
+      return true; // Allow access if the user role matches allowed roles
+    }
+
+    // Redirect unauthorized users
+    this.router.navigate(['/']);
     return false;
   }
-
-  // Check if the route requires a specific role
-  const expectedRole = route.data?.['role'];
-  if (expectedRole && userRole !== expectedRole) {
-    router.navigate(['/home']); // Redirect unauthorized users
-    return false;
-  }
-
-  return true; // Allow access
-};
+}

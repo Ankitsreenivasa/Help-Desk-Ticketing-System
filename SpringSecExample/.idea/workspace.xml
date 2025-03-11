@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8062dfb0-67a9-4627-a949-4e6b9c7718ea" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System Server/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System Server/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/java/org/manh/help_desk_ticketing_system_server/HelpDeskTicketingSystemServerApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/java/org/manh/help_desk_ticketing_system_server/HelpDeskTicketingSystemServerApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/java/org/manh/help_desk_ticketing_system_server/auth/entity/Users.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/java/org/manh/help_desk_ticketing_system_server/auth/entity/Users.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/java/org/manh/help_desk_ticketing_system_server/auth/repository/UsersRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/java/org/manh/help_desk_ticketing_system_server/auth/repository/UsersRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System Server/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/admin-dashboard/admin-dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/admin-dashboard/admin-dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/agent-dashboard/agent-dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/agent-dashboard/agent-dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/customer-dashboard/customer-dashboard.component.html" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/customer-dashboard/customer-dashboard.component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/customer-dashboard/customer-dashboard.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/components/dashboards/customer-dashboard/customer-dashboard.component.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/guards/auth.guard.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/guards/auth.guard.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/service/auth.service.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/service/auth.service.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/shared/header/header.component.ts" beforeDir="false" afterPath="$PROJECT_DIR$/../Help Desk Ticketing System UI/HelpDeskTicketingSystemUI/src/app/shared/header/header.component.ts" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHomeTypeForPersistence" value="WRAPPER" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2u1I9wR4XdCsdLjdUR7sfCZlNkA" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.SpringSecExampleApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager">
+    <configuration name="SpringSecExampleApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="SpringSecExample" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="org.manh.springsecexample.SpringSecExampleApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-a94e463ab2e7-intellij.indexing.shared.core-IU-243.25659.59" />
+        <option value="bundled-js-predefined-d6986cc7102b-1632447f56bf-JavaScript-IU-243.25659.59" />
+      </set>
+    </attachedChunks>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8062dfb0-67a9-4627-a949-4e6b9c7718ea" name="Changes" comment="" />
+      <created>1741409508454</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1741409508454</updated>
+      <workItem from="1741409509468" duration="1165000" />
+      <workItem from="1741410688211" duration="86000" />
+      <workItem from="1741410783784" duration="404000" />
+      <workItem from="1741411198381" duration="1907000" />
+      <workItem from="1741419014060" duration="10000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>

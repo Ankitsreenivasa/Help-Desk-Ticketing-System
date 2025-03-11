@@ -1,13 +1,10 @@
-export enum RoleType {
-  Customer = 'Customer',
-  Agent = 'Agent',
-  Admin = 'Admin'
-}
+import { Role } from "./enums";
 
-export interface Users{
-  id?: number; // Optional as it may not be present when creating a new user
-  name?: string;
-  email?: string;
+
+export interface User {
+  id: number;
+  name: string;
   password?: string;
-  role?: RoleType;
+  email: string;
+  role: Role;
 }

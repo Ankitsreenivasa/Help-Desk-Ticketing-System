@@ -7,9 +7,9 @@ import lombok.NoArgsConstructor;
 import lombok.NonNull;
 
 
-enum RoleType {
-    Customer, Agent, Admin
-}
+//enum RoleType {
+//    Customer, Agent, Admin
+//}
 
 @Data
 @NoArgsConstructor

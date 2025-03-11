@@ -1,50 +1,89 @@
-<div class="flex flex-col items-center min-h-screen bg-gray-900 pt-20 px-4">
-  <div class="w-full max-w-4xl bg-gray-800 shadow-xl p-6 rounded-xl mt-20 mb-20">
-    <h2 class="text-center text-2xl font-bold text-gray-200 mb-6">Agent Dashboard</h2>
+<div class="container mx-auto p-6 space-y-8 my-32">
+  <h2 class="text-3xl font-bold text-white text-center">Agent Dashboard</h2>
 
-    <!-- Search & Filter Section -->
-    <div class="flex flex-col md:flex-row gap-4 mb-6">
-      <!-- Status Filter -->
-      <select
+  <!-- Unassigned Tickets Section -->
+  <div class="card bg-gray-800 shadow-lg p-6 rounded-lg">
+    <h3 class="text-xl text-white font-semibold mb-4">Unassigned Tickets</h3>
 
-        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
+    <div *ngIf="unassignedTickets.length > 0; else noUnassignedTickets" class="space-y-4">
+      <div *ngFor="let ticket of unassignedTickets" class="card bg-gray-700 p-5 rounded-lg shadow space-y-3">
 
-      >
-        <option value="">All Statuses</option>
-        <option value="0" >Open</option>
-        <option value="1">In Progress</option>
-        <option value="2">Resolved</option>
-        <option value="3">Closed</option>
-      </select>
-
-      <!-- Priority Filter -->
-      <select
-
-        class="select select-bordered w-full md:w-48 bg-gray-700 text-gray-200"
-
-      >
-          <option value="">All Priorities</option>
-          <option value=0>Low</option>
-          <option value=1>Medium</option>
-          <option value=2>High</option>
-      </select>
-    </div>
-
-    <!-- Tickets List -->
-    <div>
-      <div class="card bg-gray-700 p-4 mb-4 rounded-lg">
-        <h3 class="text-lg font-semibold text-gray-200"></h3>
-        <p class="text-sm text-gray-400"></p>
-        <div class="flex justify-between items-center mt-2">
-          <span class="badge badge-primary"></span>
-          <span class="badge badge-secondary"></span>
+        <!-- Ticket Header -->
+        <div class="flex justify-between items-center">
+          <h4 class="text-xl font-semibold text-white">{{ ticket.title }}</h4>
+          <span class="badge px-3 py-1 text-xs font-semibold uppercase bg-yellow-500">
+            OPEN
+          </span>
         </div>
+
+        <p class="text-gray-300">{{ ticket.description }}</p>
+        <p class="text-sm text-gray-400">Priority:
+          <span class="badge px-3 py-1 bg-purple-500">{{ ticket.priority }}</span>
+        </p>
+
+        <!-- Assign Ticket Button -->
+        <button class="btn btn-primary btn-sm w-full mt-2" (click)="assignTicket(ticket.id)">
+          Assign to Me
+        </button>
       </div>
     </div>
 
-    <!-- No Tickets Message -->
-    <ng-template #noTickets>
-      <p class="text-center text-gray-400">No assigned tickets found.</p>
+    <ng-template #noUnassignedTickets>
+      <p class="text-gray-400 text-center">No unassigned tickets available.</p>
     </ng-template>
   </div>
+
+  <!-- Assigned Tickets Section -->
+<div class="card bg-gray-800 shadow-lg p-6 rounded-lg">
+  <h3 class="text-xl text-white font-semibold mb-4">Assigned Tickets</h3>
+
+  <div *ngIf="assignedTickets.length > 0; else noAssignedTickets" class="space-y-4">
+    <div *ngFor="let ticket of assignedTickets" class="card bg-gray-700 p-5 rounded-lg shadow space-y-3">
+
+      <!-- Ticket Header -->
+      <div class="flex justify-between items-center">
+        <h4 class="text-xl font-semibold text-white">{{ ticket.title }}</h4>
+        <span class="badge px-3 py-1 text-xs font-semibold uppercase"
+              [ngClass]="{
+                'bg-blue-500': ticket.status === 'IN_PROGRESS',
+                'bg-green-500': ticket.status === 'RESOLVED',
+                'bg-red-500': ticket.status === 'CLOSED'
+              }">
+          {{ ticket.status }}
+        </span>
+      </div>
+
+      <p class="text-gray-300">{{ ticket.description }}</p>
+
+      <!-- Created & Updated Timestamps -->
+      <div class="text-sm text-gray-400">
+        <p>Created: {{ ticket.createdAt | date: 'MMM d, y h:mm a' }}</p>
+        <p>Updated: {{ ticket.updatedAt | date: 'MMM d, y h:mm a' }}</p>
+      </div>
+
+      <!-- Update Ticket Status -->
+      <select class="select select-bordered w-full mt-2" (change)="updateStatus(ticket.id, $event)">
+        <option selected disabled>Change Status</option>
+        <option>IN_PROGRESS</option>
+        <option>RESOLVED</option>
+        <option>CLOSED</option>
+      </select>
+
+      <!-- Add Comment Form -->
+      <form [formGroup]="commentForms[ticket.id]" (ngSubmit)="addComment(ticket.id)" class="mt-2">
+        <textarea formControlName="comment" placeholder="Add resolution note..."
+                  class="textarea textarea-bordered w-full"></textarea>
+        <button class="btn btn-secondary w-full mt-2" type="submit"
+                [disabled]="commentForms[ticket.id] && commentForms[ticket.id].invalid">
+          Add Comment
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <ng-template #noAssignedTickets>
+    <p class="text-gray-400 text-center">No assigned tickets.</p>
+  </ng-template>
+</div>
+
 </div>

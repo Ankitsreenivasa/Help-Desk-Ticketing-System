@@ -1,0 +1,26 @@
+<div class="flex justify-center items-center min-h-screen bg-gray-900 p-6">
+  <div class="card w-full max-w-md bg-gray-800 shadow-xl rounded-lg">
+
+    <!-- Profile Header with Avatar -->
+    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-t-lg text-center">
+      <div class="avatar">
+        <div class="w-24 h-24 rounded-full border-4 border-white mx-auto">
+          <img src="favicon.ico" alt="User Profile" />
+        </div>
+      </div>
+      <h2 class="text-white text-2xl font-bold mt-3">{{ user?.name }}</h2>
+      <p class="text-gray-200">{{ user?.email }}</p>
+      <div class="badge badge-accent mt-2 uppercase">{{ user?.role }}</div>
+    </div>
+
+    <!-- Profile Stats -->
+    <div class="card-body text-center">
+      <div class="stats shadow w-full bg-gray-700 text-gray-300 rounded-lg">
+        <div class="stat">
+          <div class="stat-title">{{ statLabel }}</div>
+          <div class="stat-value text-primary">{{ statCount }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

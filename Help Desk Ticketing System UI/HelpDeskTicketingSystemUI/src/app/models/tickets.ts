@@ -1,26 +1,19 @@
-import { Users } from "./users";
+import { TicketStatus, TicketPriority } from './enums';
+import { User } from './users';
 
-export enum TicketStatus {
-  Open = 'Open',
-  InProgress = 'InProgress',
-  Resolved = 'Resolved',
-  Closed = 'Closed'
-}
-
-export enum TicketPriority {
-  Low,
-  Medium,
-  High,
-}
 
 export interface Ticket {
-  id?: number;
+  id: number;
   title: string;
   description: string;
   status: TicketStatus;
   priority: TicketPriority;
-  createdBy: Users;
-  assignedTo?: Users;
+  createdBy: number; // User ID
+  assignedTo?: number; // Agent ID (optional)
   createdAt: string;
   updatedAt: string;
+
+  // Optional UI properties (filled after fetching related data)
+  createdByUser?: User;
+  assignedToUser?: User;
 }

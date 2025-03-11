@@ -1,11 +1,12 @@
-
-import { Ticket } from "./tickets";
-import { Users } from "./users";
+import { User } from "./users";
 
 export interface Comment {
-  id?: number;
-  ticket: Ticket;
-  user: Users;
+  id: number;
+  ticketId: number;
+  userId: number;
   message: string;
   createdAt: string;
+
+  // Optional UI property
+  user?: User;
 }

@@ -1,60 +1,55 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'http://localhost:8080/api/auth'; // Backend API
-  private authTokenKey = 'authToken';
+  private apiUrl = 'http://localhost:3000/users'; // JSON Server Fake API
 
-  // ✅ BehaviorSubject to track authentication state
-  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isAuthenticated());
+  private isAuthenticatedSubject = new BehaviorSubject<boolean>(this.isLoggedIn());
   isAuthenticated$ = this.isAuthenticatedSubject.asObservable();
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient) {}
 
-  // ✅ Login function
-  login(credentials: { email: string; password: string }): Observable<any> {
-    return this.http.post(`${this.apiUrl}/login`, credentials);
+  login(email: string, password: string): Observable<any> {
+    return this.http.get<any[]>(`${this.apiUrl}?email=${email}`).pipe(
+      map(users => {
+        if (users.length > 0 && users[0].password === password) {
+          const user = users[0];
+
+          // Store user data in localStorage
+          this.storeToken('fake-jwt-token'); // Simulated JWT Token
+          localStorage.setItem('userId', user.id);
+          localStorage.setItem('userRole', user.role);
+
+          this.isAuthenticatedSubject.next(true);
+          return { token: 'fake-jwt-token', user };
+        }
+        return null;
+      })
+    );
   }
 
-  // ✅ Store token after login
+  // Add this missing method
   storeToken(token: string): void {
-    localStorage.setItem(this.authTokenKey, token);
-    this.isAuthenticatedSubject.next(true); // Update auth state
+    localStorage.setItem('authToken', token);
   }
 
-  // ✅ Get stored token
-  getToken(): string | null {
-    return localStorage.getItem(this.authTokenKey);
-  }
-
-  // ✅ Check if user is authenticated
-  isAuthenticated(): boolean {
-    return !!this.getToken();
-  }
-
-  // ✅ Logout function
   logout(): void {
-    localStorage.removeItem(this.authTokenKey);
-    this.isAuthenticatedSubject.next(false); // Update auth state
-    this.router.navigate(['/login']);
+    localStorage.removeItem('authToken');
+    localStorage.removeItem('userId');
+    localStorage.removeItem('userRole');
+    this.isAuthenticatedSubject.next(false);
   }
 
-  // ✅ Get user role from token (Safely decoding JWT)
-  getUserRole(): string | null {
-    const token = this.getToken();
-    if (!token) return null;
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('userId');
+  }
 
-    try {
-      const payload = JSON.parse(atob(token.split('.')[1])); // Decode JWT payload
-      return payload.role; // Assuming the token contains "role" field
-    } catch (error) {
-      console.error('Error decoding token:', error);
-      return null;
-    }
+  getUserRole(): string | null {
+    return localStorage.getItem('userRole');
   }
 }
